@@ -82,12 +82,14 @@ $(document).ready(function(){
           buttonPress('Back');
           break;
         }
+    }
+  });
 
-      var shifted = e.shiftKey;
-
-      if (65 <= e.which && e.which <= 90){
-        var letter = shifted ? String.fromCharCode(e.which) : String.fromCharCode(e.which).toLowerCase();
-        buttonPress("Lit_" + letter);
+  $('html').keypress(function(e){
+    if(!$('#address').is(':focus')){
+      if (e.which != 13)
+      {
+        buttonPress("Lit_" + String.fromCharCode(e.which));
       }
     }
   });
@@ -135,7 +137,7 @@ $(document).ready(function(){
           xhr.open('GET', 'http://'+ipAddress+':8060/query/icon/'+$(appsArray[value]).attr('id'), true);
           xhr.responseType = 'blob';
           xhr.onload = function(e){
-            $('#channel-list').append('<div class="channel-item" channelId="'+$(appsArray[value]).attr('id')+'"><img src="'+window.URL.createObjectURL(this.response)+'" channelId="'+$(appsArray[value]).attr('id')+'"></img><li channelId="'+$(appsArray[value]).attr('id')+'">'+$(appsArray[value]).text()+'&nbsp;</li></div>');
+            $('#channel-list').append('<div class="channel-item" channelId="'+$(appsArray[value]).attr('id')+'"><img src="'+window.URL.createObjectURL(this.response)+'" channelId="'+$(appsArray[value]).attr('id')+'"></img><li channelId="'+$(appsArray[value]).attr('id')+'">'+'</li></div>');
             count++;
             if(count === appsArray.length){
               $('.channel-item').on('click', function(e){
@@ -158,5 +160,4 @@ $(document).ready(function(){
       });
     }
   }
-
 });
