@@ -87,7 +87,7 @@ $(document).ready(function(){
 
   $('html').keypress(function(e){
     if(!$('#address').is(':focus')){
-      if (e.which != 13)
+      if (e.which != 13 && e.which != 32)
       {
         buttonPress("Lit_" + String.fromCharCode(e.which));
       }

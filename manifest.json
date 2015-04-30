@@ -1,5 +1,5 @@
 {
-  "name": "John's Roku Remote",
+  "name": "Roku Remote",
   "description": "Remote for Roku player",
   "version": "0.1",
   "manifest_version": 2,
@@ -7,6 +7,9 @@
     "http://*/",
     "storage"
     ],
+  "icons": { 
+     "128": "icon.png"
+    },
   "app": {
     "background": {
       "scripts": ["background.js"]
